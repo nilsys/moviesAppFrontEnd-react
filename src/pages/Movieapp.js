@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import 'fontsource-roboto';
 import Navbar from "../components/Navbar";
 import MoviesTable from "../components/MoviesTable";
-import AddBtn from "../components/AddBtn";
+import AddBtn from "../components/buttons/AddBtn";
 
 const useStyles = makeStyles(() =>({
     root: {

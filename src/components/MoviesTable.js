@@ -7,34 +7,36 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import EditBtn from "./buttons/EditBtn";
+import DeleteBtn from "./buttons/DeleteBtn";
 
 const columns = [
     { id: 'name', label: 'Nombre pelicula', minWidth: 170 },
     { id: 'genre', label: 'Genero', minWidth: 170 },
-    { id: 'editicon', label: ' ', minWidth: 100 },
-    { id: 'deleteicon', label: ' ', minWidth: 100 }
+    { id: 'editbtn', label: ' ', minWidth: 100 },
+    { id: 'deletebtn', label: ' ', minWidth: 100 }
 ];
 
-function createData(name, genre) {
-    return { name, genre };
+function createData(name, genre, editbtn, deletebtn) {
+    return { name, genre, editbtn, deletebtn };
 }
 
 const rows = [
-    createData('terminator', 'accion'),
-    createData('scooby doo', 'comedia'),
-    createData('el rey leon', 'animacion'),
-    createData('titanic', 'romance'),
-    createData('anabelle', 'terror'),
-    createData('juego de asesinos', 'accion'),
-    createData('toy story', 'animacion'),
-    createData('ace ventura', 'comedia'),
-    createData('ratatouille', 'animacion'),
-    createData('el rito', 'terror'),
-    createData('el conjuro', 'terro'),
-    createData('rambo', 'accion'),
-    createData('rapido y furioso', 'accion'),
-    createData('el diario de noa', 'romance'),
-    createData('crepusculo', 'romance')
+    createData('terminator', 'accion', <EditBtn />, <DeleteBtn />),
+    createData('scooby doo', 'comedia', <EditBtn />, <DeleteBtn />),
+    createData('el rey leon', 'animacion', <EditBtn />, <DeleteBtn />),
+    createData('titanic', 'romance', <EditBtn />, <DeleteBtn />),
+    createData('anabelle', 'terror', <EditBtn />, <DeleteBtn />),
+    createData('juego de asesinos', 'accion', <EditBtn />, <DeleteBtn />),
+    createData('toy story', 'animacion', <EditBtn />, <DeleteBtn />),
+    createData('ace ventura', 'comedia', <EditBtn />, <DeleteBtn />),
+    createData('ratatouille', 'animacion', <EditBtn />, <DeleteBtn />),
+    createData('el rito', 'terror', <EditBtn />, <DeleteBtn />),
+    createData('el conjuro', 'terror', <EditBtn />, <DeleteBtn />),
+    createData('rambo', 'accion', <EditBtn />, <DeleteBtn />),
+    createData('rapido y furioso', 'accion', <EditBtn />, <DeleteBtn />),
+    createData('el diario de noa', 'romance', <EditBtn />, <DeleteBtn />),
+    createData('crepusculo', 'romance', <EditBtn />, <DeleteBtn />)
 ];
 
 const useStyles = makeStyles({
@@ -49,19 +51,6 @@ const useStyles = makeStyles({
 function MoviesTable() {
 
     const classes = useStyles();
-    
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(100);
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
-    
 
     return (
 
@@ -74,6 +63,7 @@ function MoviesTable() {
                         <TableRow>
                             {columns.map((column) => (
                                 <TableCell
+                                    align="center"
                                     key={column.id}
                                     style={{ minWidth: column.minWidth }}    
                                 >
@@ -86,14 +76,14 @@ function MoviesTable() {
                     </TableHead>
 
                     <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                        {rows.map((row) => {
                             return (
 
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.label}>
                                     {columns.map((column) => {
                                         const value = row[column.id];
                                         return (
-                                            <TableCell key={column.id}>
+                                            <TableCell key={column.id} align="center">
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
                                         );
