@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core/';
-import MenuIcon from '@material-ui/icons/Menu';
+//import MenuIcon from '@material-ui/icons/Menu';
+import MenuGenre from "./MenuGenre";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +22,7 @@ function Navbar(props) {
             <AppBar position="static">
             <Toolbar variant="dense">
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
+                <MenuGenre />
             </IconButton>
             <Typography variant="h6" color="inherit">
                 MOVIESAPP
