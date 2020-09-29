@@ -2,6 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import 'fontsource-roboto';
+import Box from '@material-ui/core/Box';
 import Navbar from "../components/Navbar";
 import MoviesTable from "../components/MoviesTable";
 import AddBtn from "../components/buttons/AddBtn";
@@ -21,7 +22,9 @@ function Movieapp(props) {
                 <Navbar/>
             </Grid>
             <Grid item xs={12}>
-                <MoviesTable />
+                <Box m={2} pt={5}>
+                    <MoviesTable />
+                </Box>
             </Grid>
             <Grid item xs={12} align="center">
                 <AddBtn />
